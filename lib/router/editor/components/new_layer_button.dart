@@ -31,7 +31,11 @@ class NewLayerButton extends StatelessWidget {
               children: [
                 Text(
                   layerType.label,
-                  style: typography.subtitle,
+                  // style: typography.subtitle,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16
+                  ),
                 ),
                 Text(
                   layerType.description,
