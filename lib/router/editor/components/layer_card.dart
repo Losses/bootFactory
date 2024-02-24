@@ -22,7 +22,7 @@ class LayerCard extends StatelessWidget {
     return Column(
       children: [
         Expander(
-          leading: layerTypes[config.type]!.icon,
+          leading: Icon(layerTypes[config.type]!.icon, size: 32),
           header: Text(layerTypes[config.type]!.label),
           initiallyExpanded: config.open,
           onStateChanged: (state) {
