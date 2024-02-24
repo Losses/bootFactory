@@ -11,7 +11,7 @@ Future<LayerTypeId?> showAddLayerDialog(BuildContext context) async {
     builder: (context) => ContentDialog(
       constraints: const BoxConstraints(
         maxWidth: 488.0,
-        maxHeight: 482.0,
+        maxHeight: 464.0,
       ),
       title: const Text('Select Layer Type'),
       content: Column(

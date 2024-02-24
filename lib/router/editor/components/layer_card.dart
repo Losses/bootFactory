@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
+import './add_button.dart';
 import './config_slide.dart';
 import '../constants/layer_config.dart';
 
@@ -65,13 +66,7 @@ class LayerCard extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: IconButton(
-            icon: const Icon(FluentIcons.add),
-            onPressed: onAdd,
-          ),
-        )
+        AddButton(onAdd: onAdd)
       ],
     );
   }
