@@ -7,14 +7,18 @@ class NewLayerButton extends StatelessWidget {
     super.key,
     required this.layerType,
     required this.typography,
+    this.disabled = false,
   });
 
+  final bool disabled;
   final LayerType layerType;
   final Typography typography;
 
   @override
   Widget build(BuildContext context) {
     return Button(
+      onPressed:
+          disabled ? null : () => Navigator.pop(context, layerType.id),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
@@ -33,9 +37,7 @@ class NewLayerButton extends StatelessWidget {
                   layerType.label,
                   // style: typography.subtitle,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16
-                  ),
+                      fontWeight: FontWeight.w700, fontSize: 16),
                 ),
                 Text(
                   layerType.description,
@@ -45,7 +47,6 @@ class NewLayerButton extends StatelessWidget {
           ],
         ),
       ),
-      onPressed: () => Navigator.pop(context, LayerTypeId.animation),
     );
   }
 }

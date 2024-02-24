@@ -7,15 +7,17 @@ import '../constants/layer_config.dart';
 class LayerCard extends StatelessWidget {
   const LayerCard({
     super.key,
+    required this.index,
     required this.config,
     required this.onChanged,
     required this.onAdd,
     required this.onExpand,
   });
 
+  final int index;
   final LayerConfig config;
   final Function() onChanged;
-  final Function() onAdd;
+  final Function(int index) onAdd;
   final Function() onExpand;
 
   @override
@@ -66,7 +68,7 @@ class LayerCard extends StatelessWidget {
             ],
           ),
         ),
-        AddButton(onAdd: onAdd)
+        AddButton(index: index, onAdd: onAdd)
       ],
     );
   }

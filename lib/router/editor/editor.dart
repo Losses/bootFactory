@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:collection/collection.dart';
 import 'package:reorderables/reorderables.dart';
 
 import './utils/add_layer_modal.dart';
@@ -11,32 +12,7 @@ class _EditorState extends State<Editor> {
     setState(() {});
   }
 
-  List<LayerConfig> config = [
-    LayerConfig<int>(
-      type: LayerTypeId.animation,
-      W: 50,
-      H: 50,
-      X: 50,
-      Y: 50,
-      detail: 0,
-    ),
-    LayerConfig<int>(
-      type: LayerTypeId.fill,
-      W: 50,
-      H: 50,
-      X: 50,
-      Y: 50,
-      detail: 0,
-    ),
-    LayerConfig<int>(
-      type: LayerTypeId.picture,
-      W: 50,
-      H: 50,
-      X: 50,
-      Y: 50,
-      detail: 0,
-    )
-  ];
+  List<LayerConfig> config = [];
 
   @override
   void initState() {
@@ -44,6 +20,10 @@ class _EditorState extends State<Editor> {
   }
 
   void onReorder(int oldIndex, int newIndex) {
+    if (newIndex - 1 < 0 || oldIndex - 1 < 0) {
+      return;
+    }
+
     setState(() {
       final c = config.removeAt(oldIndex - 1);
       config.insert(newIndex - 1, c);
@@ -52,15 +32,25 @@ class _EditorState extends State<Editor> {
 
   @override
   Widget build(BuildContext context) {
-    onAdd() async {
-      print(await showAddLayerDialog(context));
+    onAdd(int index) async {
+      final animation = config.indexWhere(
+        (element) => element.type == LayerTypeId.animation,
+      );
+
+      final type = await showAddLayerDialog(animation >= 0, context);
+
+      if (type == null) return;
+
+      config.insert(index + 1, layerConfigTemplates[type]!.clone());
+      
+      setState(() {});
     }
 
-
     final rows = config
-        .map(
+        .mapIndexed(
           // ignore: unnecessary_cast
-          (x) => LayerCard(
+          (i, x) => LayerCard(
+            index: i,
             key: ValueKey(x.id!),
             config: x,
             onChanged: onChanged,
@@ -75,7 +65,10 @@ class _EditorState extends State<Editor> {
       Center(
         child: GestureDetector(
           onLongPress: () {}, // Override onLongPress to make item unmovable.
-          child: AddButton(onAdd: onAdd),
+          child: AddButton(
+            index: -1,
+            onAdd: onAdd,
+          ),
         ),
       ),
     );
