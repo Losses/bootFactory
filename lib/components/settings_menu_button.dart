@@ -33,12 +33,12 @@ class SettingsMenuButton extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 14),
                 ),
                 Text(
                   description,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 12,
                     color: typography.body?.color?.withAlpha(160),
                   ),
                 ),

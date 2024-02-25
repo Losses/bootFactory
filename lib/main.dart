@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:boot_factory/router/editor/index/editor_index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -311,7 +312,7 @@ final router = GoRouter(navigatorKey: rootNavigatorKey, routes: [
       );
     },
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const Editor()),
+      GoRoute(path: '/', builder: (context, state) => const EditorIndex()),
     ],
   ),
 ]);

@@ -9,37 +9,92 @@ class EditorIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SettingsMenuButton(
-        leading: const Icon(FluentIcons.size_legacy),
-        title: 'Package',
-        description: 'Canvas size and package metadata',
-        onPressed: () {},
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          const SettingsMenuTitle(title: 'Project'),
+          SettingsMenuButton(
+            leading: const Icon(
+              FluentIcons.size_legacy,
+              size: 20,
+            ),
+            title: 'Package',
+            description: 'Canvas size and package metadata',
+            onPressed: () {},
+          ),
+          const SettingsMenuTitle(title: 'Design'),
+          SettingsMenuButton(
+            leading: const Icon(
+              FluentIcons.d365_project_operations,
+              size: 20,
+            ),
+            title: 'Entering Animation',
+            description: 'The animation while the boot screen shows up',
+            onPressed: () {},
+          ),
+          const SizedBox(height: 8),
+          SettingsMenuButton(
+            leading: const Icon(
+              FluentIcons.progress_loop_outer,
+              size: 20,
+            ),
+            title: 'Loop Animation',
+            description: 'The looping part of the animation',
+            onPressed: () {},
+          ),
+          const SizedBox(height: 8),
+          SettingsMenuButton(
+            leading: const Icon(
+              FluentIcons.flag,
+              size: 20,
+            ),
+            title: 'Exit Animation',
+            description:
+                'The animation to be shown while system finished initialization',
+            onPressed: () {},
+          ),
+          const SettingsMenuTitle(title: 'Output'),
+          SettingsMenuButton(
+            leading: const Icon(
+              FluentIcons.build,
+              size: 20,
+            ),
+            title: 'Compile',
+            description: 'Compile your project to a Magisk module',
+            onPressed: () {},
+          ),
+        ],
       ),
-      SettingsMenuButton(
-        leading: const Icon(FluentIcons.size_legacy),
-        title: 'Entering Animation',
-        description: 'The animation while the boot screen shows up',
-        onPressed: () {},
+    );
+  }
+}
+
+class SettingsMenuTitle extends StatelessWidget {
+  const SettingsMenuTitle({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
       ),
-      SettingsMenuButton(
-        leading: const Icon(FluentIcons.progress_loop_outer),
-        title: 'Loop Animation',
-        description: 'The looping part of the animation',
-        onPressed: () {},
-      ),
-      SettingsMenuButton(
-        leading: const Icon(FluentIcons.flag),
-        title: 'Exit Animation',
-        description: 'The animation to be shown while system finished initialization',
-        onPressed: () {},
-      ),
-      SettingsMenuButton(
-        leading: const Icon(FluentIcons.build),
-        title: 'Compile',
-        description: 'Compile your project to a Magisk module',
-        onPressed: () {},
-      ),
-    ]);
+    );
   }
 }
