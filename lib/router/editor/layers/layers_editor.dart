@@ -7,7 +7,7 @@ import './components/add_button.dart';
 import './constants/layer_config.dart';
 import './components/layer_card/layer_card.dart';
 
-class _EditorState extends State<Editor> {
+class _LayersEditorState extends State<LayersEditor> {
   onChanged() {
     setState(() {});
   }
@@ -87,9 +87,9 @@ class _EditorState extends State<Editor> {
   }
 }
 
-class Editor extends StatefulWidget {
-  const Editor({super.key});
+class LayersEditor extends StatefulWidget {
+  const LayersEditor({super.key});
 
   @override
-  createState() => _EditorState();
+  createState() => _LayersEditorState();
 }

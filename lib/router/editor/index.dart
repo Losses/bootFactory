@@ -1,6 +1,10 @@
+import 'package:provider/provider.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../components/settings_menu_button.dart';
+import '../config.dart';
+import './_store/editor_context.dart';
+import '../../../components/settings_menu_button.dart';
 
 class EditorIndex extends StatelessWidget {
   const EditorIndex({
@@ -9,6 +13,8 @@ class EditorIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final editor = context.read<EditorContext>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -21,7 +27,9 @@ class EditorIndex extends StatelessWidget {
             ),
             title: 'Package',
             description: 'Canvas size and package metadata',
-            onPressed: () {},
+            onPressed: () {
+              context.push('/edit/${editor.getId()}/package_editor');
+            },
           ),
           const SettingsMenuTitle(title: 'Design'),
           SettingsMenuButton(
@@ -31,7 +39,9 @@ class EditorIndex extends StatelessWidget {
             ),
             title: 'Entering Animation',
             description: 'The animation while the boot screen shows up',
-            onPressed: () {},
+            onPressed: () {
+              context.push('/edit/${editor.getId()}/layer_editor');
+            },
           ),
           const SizedBox(height: 8),
           SettingsMenuButton(
