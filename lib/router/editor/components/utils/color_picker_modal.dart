@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart' as m;
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class _ColorPicker extends StatefulWidget {
+class ColorPicker extends StatefulWidget {
   late Color _color;
   final Function(Color color) onColorChange;
 
-  _ColorPicker({
+  ColorPicker({
+    super.key,
     required Color initialColor,
     required this.onColorChange,
   }) {
@@ -16,7 +18,7 @@ class _ColorPicker extends StatefulWidget {
   createState() => _ColorPickerState();
 }
 
-class _ColorPickerState extends State<_ColorPicker> {
+class _ColorPickerState extends State<ColorPicker> {
   @override
   void initState() {
     super.initState();
@@ -24,14 +26,17 @@ class _ColorPickerState extends State<_ColorPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return HueRingPicker(
-      enableAlpha: true,
-      pickerColor: widget._color,
-      onColorChanged: (Color color) {
-        setState(() {
-          widget._color = color;
-        });
-      },
+    return m.Material(
+      color: const Color.fromARGB(0, 0, 0, 0),
+      child: HueRingPicker(
+        enableAlpha: true,
+        pickerColor: widget._color,
+        onColorChanged: (Color color) {
+          setState(() {
+            widget._color = color;
+          });
+        },
+      ),
     );
   }
 }
@@ -44,11 +49,11 @@ Future<Color?> showColorPickerDialog(
     context: context,
     builder: (context) => ContentDialog(
       constraints: const BoxConstraints(
-        maxWidth: 488.0,
-        maxHeight: 464.0,
+        maxWidth: 520.0,
+        maxHeight: 400.0,
       ),
       title: const Text('Pick a Color'),
-      content: _ColorPicker(
+      content: ColorPicker(
         initialColor: initialColor,
         onColorChange: (x) {
           color = x;
