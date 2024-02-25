@@ -1,17 +1,18 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-import './add_button.dart';
-import './config_slide.dart';
-import '../constants/layer_config.dart';
+import '../add_button.dart';
+import '../config_slide.dart';
+import '../../constants/layer_config.dart';
 
-class LayerCard extends StatelessWidget {
-  const LayerCard({
+class LayerCardBase extends StatelessWidget {
+  const LayerCardBase({
     super.key,
     required this.index,
     required this.config,
     required this.onChanged,
     required this.onAdd,
     required this.onExpand,
+    this.child,
   });
 
   final int index;
@@ -19,6 +20,7 @@ class LayerCard extends StatelessWidget {
   final Function() onChanged;
   final Function(int index) onAdd;
   final Function() onExpand;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class LayerCard extends StatelessWidget {
           },
           content: Column(
             children: [
+              child ?? Container(),
               ConfigSlide(
                 label: 'Width',
                 value: config.W,

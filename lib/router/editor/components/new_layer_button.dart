@@ -17,30 +17,31 @@ class NewLayerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      onPressed:
-          disabled ? null : () => Navigator.pop(context, layerType.id),
+      onPressed: disabled ? null : () => Navigator.pop(context, layerType.id),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
           children: [
             Icon(
               layerType.icon,
-              size: 32,
+              size: 24,
             ),
             const SizedBox(
-              width: 16,
+              width: 20,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   layerType.label,
-                  // style: typography.subtitle,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
                 Text(
                   layerType.description,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: typography.body?.color?.withAlpha(160),
+                  ),
                 ),
               ],
             )

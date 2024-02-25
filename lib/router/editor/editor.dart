@@ -3,9 +3,9 @@ import 'package:collection/collection.dart';
 import 'package:reorderables/reorderables.dart';
 
 import './utils/add_layer_modal.dart';
-import './components/layer_card.dart';
 import './components/add_button.dart';
 import './constants/layer_config.dart';
+import './components/layer_card/layer_card.dart';
 
 class _EditorState extends State<Editor> {
   onChanged() {

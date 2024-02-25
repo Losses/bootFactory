@@ -45,29 +45,29 @@ Map<LayerTypeId, LayerType> layerTypes = {
 };
 
 Map<LayerTypeId, LayerConfig> layerConfigTemplates = {
-  LayerTypeId.animation: LayerConfig<int>(
+  LayerTypeId.animation: LayerConfig<String?>(
     type: LayerTypeId.animation,
     W: 50,
     H: 50,
     X: 50,
     Y: 50,
-    detail: 0,
+    detail: null,
   ),
-  LayerTypeId.picture: LayerConfig<int>(
+  LayerTypeId.picture: LayerConfig<String?>(
     type: LayerTypeId.picture,
     W: 50,
     H: 50,
     X: 50,
     Y: 50,
-    detail: 0,
+    detail: null,
   ),
-  LayerTypeId.fill: LayerConfig<int>(
+  LayerTypeId.fill: LayerConfig<Color?>(
     type: LayerTypeId.fill,
     W: 50,
     H: 50,
     X: 50,
     Y: 50,
-    detail: 0,
+    detail: null,
   ),
 };
 
