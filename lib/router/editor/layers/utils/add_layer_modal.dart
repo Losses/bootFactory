@@ -3,9 +3,10 @@ import 'package:fluent_ui/fluent_ui.dart';
 import '../constants/layer_config.dart';
 import '../components/new_layer_button.dart';
 
-Future<LayerTypeId?> showAddLayerDialog(bool hasAnimation, BuildContext context) async {
-  Typography typography = FluentTheme.of(context).typography;
-
+Future<LayerTypeId?> showAddLayerDialog(
+  bool hasAnimation,
+  BuildContext context,
+) async {
   return showDialog<LayerTypeId>(
     context: context,
     builder: (context) => ContentDialog(
@@ -23,17 +24,14 @@ Future<LayerTypeId?> showAddLayerDialog(bool hasAnimation, BuildContext context)
           NewLayerButton(
             disabled: hasAnimation,
             layerType: layerTypes[LayerTypeId.animation]!,
-            typography: typography,
           ),
           const SizedBox(height: 16),
           NewLayerButton(
             layerType: layerTypes[LayerTypeId.picture]!,
-            typography: typography,
           ),
           const SizedBox(height: 16),
           NewLayerButton(
             layerType: layerTypes[LayerTypeId.fill]!,
-            typography: typography,
           ),
         ],
       ),

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:boot_factory/router/editor/editor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -14,6 +13,7 @@ import './navigation.dart';
 import './utils/is_desktop.dart';
 import './constant/app_title.dart';
 import './utils/build_pane_item.dart';
+import './router/editor/layers/editor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

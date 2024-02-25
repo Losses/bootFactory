@@ -1,31 +1,30 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-import '../constants/layer_config.dart';
-
-class NewLayerButton extends StatelessWidget {
-  const NewLayerButton({
+class SettingsMenuButton extends StatelessWidget {
+  const SettingsMenuButton({
     super.key,
-    required this.layerType,
-    required this.typography,
-    this.disabled = false,
+    required this.onPressed,
+    required this.leading,
+    required this.title,
+    required this.description,
   });
 
-  final bool disabled;
-  final LayerType layerType;
-  final Typography typography;
+  final void Function()? onPressed;
+  final Icon leading;
+  final String title;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
+    final typography = FluentTheme.of(context).typography;
+
     return Button(
-      onPressed: disabled ? null : () => Navigator.pop(context, layerType.id),
+      onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
           children: [
-            Icon(
-              layerType.icon,
-              size: 24,
-            ),
+            leading,
             const SizedBox(
               width: 20,
             ),
@@ -33,11 +32,11 @@ class NewLayerButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  layerType.label,
+                  title,
                   style: const TextStyle(fontSize: 16),
                 ),
                 Text(
-                  layerType.description,
+                  description,
                   style: TextStyle(
                     fontSize: 13,
                     color: typography.body?.color?.withAlpha(160),
