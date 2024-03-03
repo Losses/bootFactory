@@ -15,7 +15,15 @@ class EditorShell extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: editorContext,
-      child: child,
+      child: Row(children: [
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          child: child,
+        ),
+        const Text("121"),
+      ]),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:go_router/go_router.dart';
 
 import 'index.dart';
-import 'editor/index.dart';
+import 'editor/editor_index.dart';
 import './editor/layers/layers_editor.dart';
 import './editor/package/package_editor.dart';
 
@@ -15,7 +15,7 @@ final _editorShellNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  debugLogDiagnostics: true,
+  // debugLogDiagnostics: true,
   routes: [
     ShellRoute(
       navigatorKey: _mainShellNavigatorKey,

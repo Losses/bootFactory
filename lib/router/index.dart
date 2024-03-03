@@ -6,7 +6,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:window_manager/window_manager.dart';
 
-import './config.dart';
+import 'config.dart';
 import '../theme.dart';
 import '../navigation.dart';
 import '../utils/is_desktop.dart';
